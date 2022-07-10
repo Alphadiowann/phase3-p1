@@ -6,10 +6,13 @@ fetch("https://picsum.photos/v2/list?page=2&limit=100")
     const i = Math.floor(Math.random() * 100); // returns a random #
 
     console.log(i, listOfPhotos[i].id, listOfPhotos[i].download_url);
-    document.querySelector("#app").innerHTML += `
-            <h2>
-              ${listOfPhotos[i].author} - ${listOfPhotos[i].id}
-            </h2>
+    const button = document.querySelector("button");
+    button.addEventListener("click", () => {
+      location.reload();
+    });
 
-            <img src="${listOfPhotos[i].download_url}" alt="Random image" />`;
+    document.querySelector("#app").innerHTML += `
+      <h2>${listOfPhotos[i].author} - ${listOfPhotos[i].id}</h2>
+
+      <img src="${listOfPhotos[i].download_url}" alt="Random image" />`;
   });
